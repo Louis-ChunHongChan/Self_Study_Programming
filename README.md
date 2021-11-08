@@ -53,10 +53,6 @@ My self-study journey on programming
 
 **!!!** When the same function definition appears in single cpp file -> compile error; When the same definition appears in different cpp file -> linking error
 
-- *static* functions are only declared to be used in that specific cpp file, which linker will ignore during linking
-  - To avoid conflict if there are different definitions of a function
-- *inline* similar to static but return the same address in different cpp files when *static* returns different address
-
 **<u>Variables</u>**
 
 - *char* - 1 byte
@@ -93,5 +89,27 @@ My self-study journey on programming
 
 **<u>References</u>**
 
+- Reference is the reference of an existing variable (share the same address)
+  - int& ref = a
+
+- Not occupy new memory space
+  - change ref -> change the original variable's data
+
+- After reference is declared, cannot change what it references
+- Pass it as parameter to modify the data directly & save memory from copying the data
+
+**<u>Classes</u>**
+
+- Functions inside classes are called *Methods*
+- Variables are private initially
+- **Class** normally used for inheritances
+- **Structs** is the same as class except the variables are public initially
+  - Normally for representing some data in a structure
 - 
+
+**<u>Static Keyword</u>**
+
+- *static* functions are only declared to be used in that specific cpp file, which linker will ignore during linking
+  - To avoid conflict if there are different definitions of a function
+- *inline* similar to static but return the same address in different cpp files when *static* returns different address
 
