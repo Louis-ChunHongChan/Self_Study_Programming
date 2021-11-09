@@ -25,11 +25,11 @@ My self-study journey on programming
 - Main Function: the entry point of C++ program (execution start with the first line of code in main function and go line by line)
   - Doesn't need return statement despite the return type [int] (assume return 0)
 
-- [<<] left shift (overloaded) operator in *std::cout <<*
+- [<<] left shift (overloaded) operator in ```std::cout <<```
   - Overloaded: parameters XOR Override: contents
   - Push statements one by one to the cout function
 
-- std::cin.get() is to wait for pressing Enter to continue (use as a pause)
+- ```std::cin.get()``` is to wait for pressing Enter to continue (use as a pause)
 
 **<u>Workflow of C++</u>**
 
@@ -45,7 +45,7 @@ My self-study journey on programming
 - Function Signature: input and output type
 - As long as a declaration is made in a cpp file, when it comes to linker, even without definition in the same cpp file, the linker will still find the definition of the function
   - Unresolved External Symbol: linking error occurs when linker cannot find the definition of the function
-- #define INTEGER int: do a search for INTEGER and replace with int
+- ```#define INTEGER int``` do a search for INTEGER and replace with int
 - Constant Folding: simple math calculation can be done in compile time
   - eax: return register
   - imul: multiplication
@@ -71,31 +71,27 @@ My self-study journey on programming
 - To declare certain type of functions to be used throughout the program (just declaration stored to tell the program what functions exist & prevent overlap definition)
   - When there are functions that are defined somewhere and need to be used in many places, header file can save some time from keep copy & paste a bunch of code
 - *#include* absolute/standard library header files use <>; *#include* relative header files use ""
-- ```
-  #pragma once
-  ```
-  means only include this file once: incase a header file included another header file but the other header file is also being included in the same translation unit
+- ```#pragma once``` means only include this file once: incase a header file included another header file but the other header file is also being included in the same translation unit
 
 **<u>Pointers</u>**
 
 - <u>Heap</u> is the memory space for C++
-- Pointer is an int variable that holds specific memory address
+- Pointer is an int variable that holds specific memory address (can point to new address)
 - Double pointer means a pointer pointing to the address of another pointer that is pointing to a variable's address
-- *&var* to retrieve the memory address of that var
+- ```&var``` to retrieve the memory address of that var
   - Can be (double*) &var
-- **ptr* is dereferencing the pointer -> accessing the data it points to
-- *ptr* can point to a new address
+- ```ptr*``` is dereferencing the pointer -> accessing the data it points to
 - This is the pointer that points to the beginning of the block of memory
-  - char* ptr = new char[8]
-- Function *memset* takes in a pointer to the beginning of a block of memory, a value, bytes it should fill
-- *delete[] ptr* after using to free up memory space
+  ```char* ptr = new char[8]```
+- Function ```memset``` takes in a pointer to the beginning of a block of memory, a value, bytes it should fill
+- ```delete[] ptr``` after using to free up memory space
 
 **<u>References</u>**
 
 - Reference is the reference of an existing variable (share the same address)
-  - int& ref = a
+  ```int& ref = a```
 
-- Not occupy new memory space
+- Does not occupy new memory space
   - change ref -> change the original variable's data
 
 - After reference is declared, cannot change what it references
