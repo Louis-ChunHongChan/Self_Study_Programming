@@ -71,7 +71,10 @@ My self-study journey on programming
 - To declare certain type of functions to be used throughout the program (just declaration stored to tell the program what functions exist & prevent overlap definition)
   - When there are functions that are defined somewhere and need to be used in many places, header file can save some time from keep copy & paste a bunch of code
 - *#include* absolute/standard library header files use <>; *#include* relative header files use ""
-- *#pragma once* means only include this file once: incase a header file included another header file but the other header file is also being included in the same translation unit
+- ```
+  #pragma once
+  ```
+  means only include this file once: incase a header file included another header file but the other header file is also being included in the same translation unit
 
 **<u>Pointers</u>**
 
