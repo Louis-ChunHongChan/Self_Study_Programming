@@ -103,9 +103,8 @@ My self-study journey on programming
 
 - Functions inside classes are called *Methods*
 - Variables are private initially
-- **Class** normally used for inheritances
-- **Structs** is the same as class except the variables are public initially
-  - Normally for representing some data in a structure
+- *class* normally used for inheritances
+- *struct* is the same as class except the variables are public initially
 - 
 
 **<u>Static Keyword</u>**
