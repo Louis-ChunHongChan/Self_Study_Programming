@@ -18,7 +18,7 @@ My self-study journey on programming
 
 **<u>HelloWorld in C++</u>**
 
-- #include <iostream> is a preprocessor statement (w/ hash)
+- ```#include <iostream>``` is a preprocessor statement (w/ hash)
   - Compiler preprocess all preprocessors before compilation of other source code
   - [include] will find a file and copy & paste everything in the file to the place
 
