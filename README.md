@@ -89,7 +89,9 @@ My self-study journey on programming
 **<u>References</u>**
 
 - Reference is the reference of an existing variable (share the same address)
-  ```int& ref = a```
+  ```
+  int& ref = a
+  ```
 
 - Does not occupy new memory space
   - change ref -> change the original variable's data
