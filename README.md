@@ -89,7 +89,7 @@ My self-study journey on programming
 **<u>References</u>**
 
 - Reference is the reference of an existing variable (share the same address)
-  ```
+  ```c++
   int& ref = a
   ```
 
