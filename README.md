@@ -111,6 +111,6 @@ My self-study journey on programming
 **<u>Static Keyword</u>**
 
 - *static* functions are only declared to be used in that specific cpp file, which linker will ignore during linking
-  - To avoid conflict if there are different definitions of a function
+  - Can avoid conflict if there are different definitions of a function
 - *inline* similar to static but return the same address in different cpp files when *static* returns different address
 
