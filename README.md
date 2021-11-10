@@ -51,7 +51,9 @@ My self-study journey on programming
   - imul: multiplication
   - a mov can be saved by return constant calculation
 
-**!!!** When the same function definition appears in single cpp file -> compile error; When the same definition appears in different cpp file -> linking error
+**!!!** When the same function definition appears in single cpp file -> compile error
+
+**!!!** When the same definition appears in different cpp file -> linking error
 
 **<u>Variables</u>**
 
@@ -105,11 +107,64 @@ My self-study journey on programming
 - Variables are private initially
 - *class* normally used for inheritances
 - *struct* is the same as class except the variables are public initially
+
+**<u>Static & Extern</u>**
+
+- ```inline```similar to static but return the same address in different cpp files when *static* returns different address
+- ```static``` functions are only declared to be used in that specific cpp file, invisible for linker
+  - can avoid conflict if there are different definitions of a function/variable
+
+- ```static``` method can be called without class initialization & do not have access to a class instance
+- Global ```static``` variable:
+  - scope: only visible to that transition unit 
+  - will look for definition only in the transition unit when linking
+
+- Class ```static``` variable:
+  - scope: become global scope
+  - only one instance of the variable will be created across all class instances
+  - only visible to that class (need to be accessed by ```Class::Var```)
+- ```extern``` looks for the definition in an external translation unit
+- Lifetime: until the program terminates
+- Non-static method automatically take in a class instance as a parameter while ```static``` method does not (so it can't access non-static variables because that belong to the class and there is no class instance passed in as parameter)
+
+**<u>Singleton</u>**
+
+- A class that should only has 1 instance exists
+
+- ```c++
+  class Singleton {
+  public:
+  	static Singleton& get() {
+  		static Singleton instance;
+  		return instance;
+  	}
+  }
+  ```
+
+**<u>Enums</u>**
+
+- A set/type to give a name to an int (semantic use), and the enum type of variable can only be modified with the same enum variable
+
+- Start at 0 since the 1st variable/The next few variables are the increment of the previous one
+
+- Can be fixed to a certain variable type
+
+  ```c++
+  enum Example : unsigned char
+  ```
+
+- Allows duplicated variable name for different type
+
+  ```c++
+  enum Example {
+  	INIT, END
+  };
+  int main() {
+  	Example e1 = INIT; // e1 = 0
+      float INIT = 1.0;  // valid
+  }
+  ```
+
+**<u>Constructor</u>**
+
 - 
-
-**<u>Static Keyword</u>**
-
-- *static* functions are only declared to be used in that specific cpp file, which linker will ignore during linking
-  - Can avoid conflict if there are different definitions of a function
-- *inline* similar to static but return the same address in different cpp files when *static* returns different address
-
