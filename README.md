@@ -3,9 +3,9 @@ My self-study journey on programming
 
 ---------------------------------
 
-**<u>Language: C++</u>**
+**<ins>Language: C++</ins>**
 
-**<u>Intro</u>**
+**<ins>Intro</ins>**
 
 - Direct control over hardware
 - Source code -> Compiler -> Machine code (for CPU to execute)
@@ -16,7 +16,7 @@ My self-study journey on programming
   - Compile -> Translate (Runtime) -> Run
 - Can run on multiple platforms based on the compiler (x64/ x86 windows or MacOS) that output machine code for platforms
 
-**<u>HelloWorld in C++</u>**
+**<ins>HelloWorld in C++</ins>**
 
 - ```#include <iostream>``` is a preprocessor statement (w/ hash)
   - Compiler preprocess all preprocessors before compilation of other source code
@@ -31,7 +31,7 @@ My self-study journey on programming
 
 - ```std::cin.get()``` is to wait for pressing Enter to continue (use as a pause)
 
-**<u>Workflow of C++</u>**
+**<ins>Workflow of C++</ins>**
 
 - File is just a way to feed compiler with source code
 - Solution Configuration: rules when build projects
@@ -55,7 +55,7 @@ My self-study journey on programming
 
 **!!!** When the same definition appears in different cpp file -> linking error
 
-**<u>Variables</u>**
+**<ins>Variables</ins>**
 
 - *char* - 1 byte
 - *short* - 2 bytes
@@ -68,16 +68,16 @@ My self-study journey on programming
 - *bool* - 0 = false; any other number = true (1 for bool)
   - cost 1 bit but only bytes can be accessed, so 1 byte
 
-**<u>Header Files</u>**
+**<ins>Header Files</ins>**
 
 - To declare certain type of functions to be used throughout the program (just declaration stored to tell the program what functions exist & prevent overlap definition)
   - When there are functions that are defined somewhere and need to be used in many places, header file can save some time from keep copy & paste a bunch of code
 - *#include* absolute/standard library header files use <>; *#include* relative header files use ""
 - ```#pragma once``` means only include this file once: incase a header file included another header file but the other header file is also being included in the same translation unit
 
-**<u>Pointers</u>**
+**<ins>Pointers</ins>**
 
-- <u>Heap</u> is the memory space for C++
+- <ins>Heap</ins> is the memory space for C++
 - Pointer is an int variable that holds specific memory address (can point to new address)
 - Double pointer means a pointer pointing to the address of another pointer that is pointing to a variable's address
 - ```&var``` to retrieve the memory address of that var
@@ -88,7 +88,7 @@ My self-study journey on programming
 - Function ```memset``` takes in a pointer to the beginning of a block of memory, a value, bytes it should fill
 - ```delete[] ptr``` after using to free up memory space
 
-**<u>References</u>**
+**<ins>References</ins>**
 
 - Reference is the reference of an existing variable (share the same address)
   ```c++
@@ -101,14 +101,14 @@ My self-study journey on programming
 - After reference is declared, cannot change what it references
 - Pass it as parameter to modify the data directly & save memory from copying the data
 
-**<u>Classes</u>**
+**<ins>Classes</ins>**
 
 - Functions inside classes are called *Methods*
 - Variables are private initially
 - *class* normally used for inheritances
 - *struct* is the same as class except the variables are public initially
 
-**<u>Static & Extern</u>**
+**<ins>Static & Extern</ins>**
 
 - ```inline```similar to static but return the same address in different cpp files when *static* returns different address
 - ```static``` functions are only declared to be used in that specific cpp file, invisible for linker
@@ -127,7 +127,7 @@ My self-study journey on programming
 - Lifetime: until the program terminates
 - Non-static method automatically take in a class instance as a parameter while ```static``` method does not (so it can't access non-static variables because that belong to the class and there is no class instance passed in as parameter)
 
-**<u>Singleton</u>**
+**<ins>Singleton</ins>**
 
 - A class that should only has 1 instance exists
 
@@ -141,7 +141,7 @@ My self-study journey on programming
   }
   ```
 
-**<u>Enums</u>**
+**<ins>Enums</ins>**
 
 - A set/type to give a name to an int (semantic use), and the enum type of variable can only be modified with the same enum variable
 
@@ -165,6 +165,13 @@ My self-study journey on programming
   }
   ```
 
-**<u>Constructor</u>**
+**<ins>Constructor</ins>**
+
+- C++ has a default constructor for a class/struct
+- 
+- *Destructor*
+  - C++ has a default destructor for a class/struct -> auto activate when out of scope
+
+**<ins>Inheritance</ins>**
 
 - 
