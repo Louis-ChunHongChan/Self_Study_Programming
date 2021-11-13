@@ -15,6 +15,8 @@ My self-study journey on programming
   - Source code -> Intermediate code -> (Runtime) VM -> convert to machine code base on platform
   - Compile -> Translate (Runtime) -> Run
 - Can run on multiple platforms based on the compiler (x64/ x86 windows or MacOS) that output machine code for platforms
+- Stack: automatic storage duration (more efficient, but no control in lifetime)
+- Heap: dynamic storage duration/allocation (pointers, reference, etc.)
 
 **<ins>HelloWorld in C++</ins>**
 
@@ -77,7 +79,6 @@ My self-study journey on programming
 
 **<ins>Pointers</ins>**
 
-- <ins>Heap</ins> is the memory space for C++
 - Pointer is an int variable that holds specific memory address (can point to new address)
 - Double pointer means a pointer pointing to the address of another pointer that is pointing to a variable's address
 - ```&var``` to retrieve the memory address of that var
@@ -99,14 +100,38 @@ My self-study journey on programming
   - change ref -> change the original variable's data
 
 - After reference is declared, cannot change what it references
+
 - Pass it as parameter to modify the data directly & save memory from copying the data
 
 **<ins>Classes</ins>**
 
 - Functions inside classes are called *Methods*
+
 - Variables are private initially
+
 - *class* normally used for inheritances
+
 - *struct* is the same as class except the variables are public initially
+
+- ```new``` always gives a pointer to the dynamically-allocated object, never a reference
+
+- Can create class instance in 2 ways:
+
+  1. ```c++
+     MyClass obj;
+     ```
+
+  2. ```c++
+     MyClass& ref = *new MyClass;
+     ```
+
+     This saved the address of the object to a pointer, then dereference the pointer, and save the address (value) into the reference
+
+  3. ```c++
+     MyClass* ptr = new MyClass;
+     ```
+
+     This let a pointer be the access to the new class object
 
 **<ins>Static & Extern</ins>**
 
@@ -174,4 +199,111 @@ My self-study journey on programming
 
 **<ins>Inheritance</ins>**
 
+- sub-class must has everything superclass has
+
+```c++
+class gameObject {};
+class player : public gameObject {};
+```
+
+- *Polymorphism*: Same entity (function or object) behaves differently based on the methods override at run time
+
+  ```c++
+  class car {
+  public:
+  	virtual void horn() { std::cout << "Voom Voom"; }
+  };
+  
+  class toyCar : public car {
+  public:
+  	void horn() { std::cout << "Boot Boot"; }
+  };
+  
+  int main() {
+  	car c;
+  	c.horn();  // output "Voom Voom"
+  	toyCar tC;
+  	tC.horn();  // output "Boot Boot"
+  }
+  ```
+
+- ```public``` inheritance means everything sub-class inherited remains the same
+
+- ```protected``` inheritance means public -> protected, other remains the same
+
+- ```private``` inheritance means all become private
+
+**<u>Virtual Functions</u>**
+
+- Use dynamic dispatch: implemented by V-table (virtual table) that contains all the virtual functions in the base class, map them to the correct overwritten functions at runtime
+
+  1. Require addition space for the V-table
+  2. Every time the virtual function get called, it has to go through the V-table to find the function to map to
+
+- For polymorphism:
+
+  - if not using virtual functions, the method in the type will be used instead of the instance of the class created
+
+    ```c++
+    class Entity {
+    public:
+    	void func() { std::cout << "This is Entity." << std::endl; }
+    };
+    
+    class Player : public Entity {
+    public:
+    	void func() { std::cout << "This is Player." << std::endl; }
+    };
+    
+    void p(Entity* e) { e.func(); }
+    
+    int main() {
+    	Entity* player = new Player;
+    	player->func();  // Output: This is Entity.
+        p(player);  // Output: This is Entity.
+    	std::cin.get();
+    }
+    ```
+
+  - Solve: use virtual function to make sure the method used is from the instance not the type
+
+    ```c++
+    class Entity {
+    public:
+    	virtual void func() { std::cout << "This is Entity." << std::endl; }
+    };
+    
+    class Player : public Entity {
+    public:
+    	void func() { std::cout << "This is Player." << std::endl; }
+    };
+    
+    int main() {
+    	Entity* player = new Player;
+    	player->func();  // Output: This is Player.
+    	std::cin.get();
+    }
+    ```
+
+
+**<u>Interface/Abstract class (pure virtual functions)</u>**
+
+- Use to force sub-class to have the certain method included when inherit
+
+- Can't instantiate the class unless the sub-class implemented the pure virtual function
+
+- Can't be defined/implemented in the class
+
+- Force the sub-class to override the method
+
+  ```c++
+  class Entity {
+  public:
+      virtual void func() = 0;
+  }
+  ```
+
+**<u>Visibility</u>**
+
 - 
+
