@@ -74,19 +74,26 @@ My self-study journey on programming
 
 - To declare certain type of functions to be used throughout the program (just declaration stored to tell the program what functions exist & prevent overlap definition)
   - When there are functions that are defined somewhere and need to be used in many places, header file can save some time from keep copy & paste a bunch of code
-- *#include* absolute/standard library header files use <>; *#include* relative header files use ""
+- ```#include``` absolute/standard library header files use <>; ```#include``` relative header files use ""
 - ```#pragma once``` means only include this file once: incase a header file included another header file but the other header file is also being included in the same translation unit
 
 **<ins>Pointers</ins>**
 
 - Pointer is an int variable that holds specific memory address (can point to new address)
+
 - Double pointer means a pointer pointing to the address of another pointer that is pointing to a variable's address
+
 - ```&var``` to retrieve the memory address of that var
   - Can be (double*) &var
+
 - ```ptr*``` is dereferencing the pointer -> accessing the data it points to
+
 - This is the pointer that points to the beginning of the block of memory
-  ```char* ptr = new char[8]```
+
+  ```c++
+  char* ptr = new char[8]
 - Function ```memset``` takes in a pointer to the beginning of a block of memory, a value, bytes it should fill
+
 - ```delete[] ptr``` after using to free up memory space
 
 **<ins>References</ins>**
@@ -112,8 +119,6 @@ My self-study journey on programming
 - *class* normally used for inheritances
 
 - *struct* is the same as class except the variables are public initially
-
-- ```new``` always gives a pointer to the dynamically-allocated object, never a reference
 
 - Can create class instance in 2 ways:
 
@@ -233,9 +238,9 @@ class player : public gameObject {};
 
 - ```private``` inheritance means all become private
 
-**<u>Virtual Functions</u>**
+**<ins>Virtual Functions</ins>**
 
-- Use dynamic dispatch: implemented by V-table (virtual table) that contains all the virtual functions in the base class, map them to the correct overwritten functions at runtime
+- Use dynamic dispatch: implemented by V-table (virtual table) which is a table of function pointers to all the virtual methods and map them to corresponding derived class method at runtime
 
   1. Require addition space for the V-table
   2. Every time the virtual function get called, it has to go through the V-table to find the function to map to
@@ -286,7 +291,7 @@ class player : public gameObject {};
     ```
 
 
-**<u>Interface/Abstract class (pure virtual functions)</u>**
+**<ins>Interface/Abstract class (pure virtual functions)</ins>**
 
 - Use to force sub-class to have the certain method included when inherit
 
@@ -303,7 +308,63 @@ class player : public gameObject {};
   }
   ```
 
-**<u>Visibility</u>**
+**<ins>Visibility</ins>**
+
+- ```private```: only within the same class can modify
+- ```protected```: all classes on the hierarchy can access
+- ```public```: everyone can access
+
+**<ins>Arrays</ins>**
+
+```c++
+// creating an array on Heap (not recommended)
+int* arr = new int[5];
+*(arr + 1) = 1;  // arr[1] = 1
+*(int*)((char*)arr + 8) = 2;  // arr[2] = 2
+// finish using
+delete[] arr;
+```
+
+```c++
+int arr[5];  // stack allocated array
+// need sizeof(arr) / sizeof(int) to count for elements
+```
+
+```c++
+std::array<int, 5> arr;  // more user friendly
+// arr.size();
+```
+
+**<ins>String</ins>**
+
+- std::string API Ref: http://www.cplusplus.com/reference/string/string/
+- Strings are const char array (an extra character at the end as a NULL termination character)
+
+```c++
+const char* str; // end with a NULL at the end
+```
+
+```c++
+std::string str;  // takes in const char* as parameter
+```
+
+- Concatenation:
+
+  ```c++
+  std::string str = std::string("Hello") + " World!";
+  str += " It's me!";  // str = Hello World! It's me!
+  bool contains = str.find("lo") != std::string::npos;  // is "lo" found before invalid position?
+  ```
+
+- Fast practice with strings
+
+  ```c++
+  void read(const std::string& str) {}  // read-only
+  void write(std::string& str) {}  // modify the string directly
+  ```
 
 - 
 
+**<u>New</u>**
+
+- ```new``` always gives a pointer to the dynamically-allocated object, never a reference
