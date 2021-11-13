@@ -338,7 +338,7 @@ std::array<int, 5> arr;  // more user friendly
 **<ins>String</ins>**
 
 - std::string API Ref: http://www.cplusplus.com/reference/string/string/
-- Strings are const char array (an extra character at the end as a NULL termination character)
+- Strings are const char* array (an extra character at the end as a NULL termination character)
 
 ```c++
 const char* str; // end with a NULL at the end
