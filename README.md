@@ -140,7 +140,7 @@ My self-study journey on programming
 
 **<ins>Static & Extern</ins>**
 
-- ```inline```similar to static but return the same address in different cpp files when *static* returns different address
+- ```inline```similar to static but return the same address in different translation unit when *static* returns different address
 - ```static``` functions are only declared to be used in that specific cpp file, invisible for linker
   - can avoid conflict if there are different definitions of a function/variable
 
@@ -363,8 +363,55 @@ std::string str;  // takes in const char* as parameter
   void write(std::string& str) {}  // modify the string directly
   ```
 
+- Wide character
+
+  ```c++
+  const wchar_t* name = L"James";  // 2 bytes
+  ```
+
+**<ins>Const</ins>**
+
+- Read the line with const backward
+
+  ```c++
+  const int* a = new int;  // a is a pointer that points to an int that is const (can't modify the content)
+  int* const a = new int;  // a is a const int pointer (can't point to something else)
+  // can't reassign the pointer if const is on the right of *
+  // can't change the content of the thing const on the left of *
+  ```
+
+- non-const can call `const` and non-const; `const` can only call `const`
+
+- `const` with methods
+
+  ```c++
+  int getX() const {}  // This method cannot modify class members
+  int* x, *y;  // To create 2 pointer variables
+  ```
+
+- `mutable` makes variables modifiable even within the const methods (normally for const method DebugCount or Lambdas [rare])
+
+  ```c++
+  // if pass in by reference [&](), then no need mutable
+  int x = 5;
+  auto f = [=]() mutable {
+      // mutable allows the lambda to modify the value passed in
+      x++;
+      std::cout << x;
+  }
+  f();
+  ```
+
+**<ins>Initializer Lists</ins>**
+
 - 
 
-**<u>New</u>**
+**<ins>Good Practice</ins>**
+
+- Always use initializer lists
+
+**<ins>New</ins>**
 
 - ```new``` always gives a pointer to the dynamically-allocated object, never a reference
+- 
+
